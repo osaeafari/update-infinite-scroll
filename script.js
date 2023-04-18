@@ -5,11 +5,12 @@ let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0; 
 let photosArray = [];
+const Count = 5;
 
 // Unsplash API
 const initialCount = 5;
-const apikey = 'your API key';
-const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${count}`;
+const apikey = 'api key';
+const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apikey}&count=${Count}`;
 
 function updateAPIURLWithNewCount (picCount) {
   apiUrl = `https://api.unsplash.com/photos/random?client_id=${apikey}&count=${picCount}`;
@@ -39,14 +40,14 @@ function displayPhotos(){
 
   // Run function for each object in photArray
   photosArray.forEach((photo) => {
-    // Create <a> to link to Unsplash
+    // Create an <a> to link to Unsplash
     const item = document.createElement('a');
     setAttributes(item, {
       href: photo.links.html,
       target: '_blank',
     });
 
-    //create <img> for photo
+    //create an <img> for photo
     const img = document.createElement('img');
     setAttributes(img, {
       src: photo.urls.regular,
@@ -57,7 +58,7 @@ function displayPhotos(){
     // Event Listener, check when each is finsihed loading 
     img.addEventListener('load', imageloaded);
 
-    // Put <img> inside <a>, then put both inside imageContainer Element
+    // Put an <img> inside <a>, then put both inside imageContainer Element
     item.appendChild(img);
     imageContainer.appendChild(item);
   });
